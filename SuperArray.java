@@ -12,6 +12,9 @@ public class SuperArray{
   }
 
   public boolean add(String element){
+    if(size == data.length){
+      resize();
+    }
     data[size] = element;
     size ++;
     return true;
@@ -25,5 +28,13 @@ public class SuperArray{
     String temp = data[index];
     data[index] = element;
     return temp;
+  }
+
+  private void resize(){
+    String[] newguy = new String[data.length + 1];
+    for(int i = 0; i < data.length; i++){
+      newguy[i] = data[i];
+    }
+    data = newguy;
   }
 }
