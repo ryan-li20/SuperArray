@@ -7,6 +7,11 @@ public class SuperArray{
     size = 0;
   }
 
+  public SuperArray(int initialCapacity){
+    data = new String[initialCapacity];
+    size = 0;
+  }
+
   public int size(){
     return size;
   }
@@ -31,7 +36,7 @@ public class SuperArray{
   }
 
   private void resize(){
-    String[] newguy = new String[data.length + 10];
+    String[] newguy = new String[data.length * 2];
     for(int i = 0; i < data.length; i++){
       newguy[i] = data[i];
     }
@@ -68,5 +73,32 @@ public class SuperArray{
       output1 = output1 + ", " + data[i];
     }
     return output1 + "]";
+  }
+
+  public void add(int index, String element){
+    if(size == data.length){
+      resize();
+    }
+    if(size < index){
+      System.out.println("OUT OF BOUNDS, DIDN'T ADD GIVEN NUMBER");
+      return;
+    }
+    for(int i = size; i > index; i--){
+      data[i] = data[i-1];
+    }
+    data[index] = element;
+    // if(size == 0){
+    //   add(element);
+    // }
+
+    size++;
+  }
+
+  public String remove(int index){
+    String temp = data[index];
+    for(int i = index; i <= size; i++){
+      data[index] = data[index+1];
+    }
+    return temp;
   }
 }
