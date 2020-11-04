@@ -2,6 +2,14 @@ public class SuperArray{
   private String[] data;
   private int size;
 
+  private void resize(){
+    String[] newguy = new String[data.length * 2];
+    for(int i = 0; i < data.length; i++){
+      newguy[i] = data[i];
+    }
+    data = newguy;
+  }
+
   public SuperArray(){
     data = new String[10];
     size = 0;
@@ -33,14 +41,6 @@ public class SuperArray{
     String temp = data[index];
     data[index] = element;
     return temp;
-  }
-
-  private void resize(){
-    String[] newguy = new String[data.length * 2];
-    for(int i = 0; i < data.length; i++){
-      newguy[i] = data[i];
-    }
-    data = newguy;
   }
 
   public boolean isEmpty(){
@@ -113,4 +113,14 @@ public class SuperArray{
     }
     return -1;
   }
+
+  public String[] toArray(){
+    String[] guy = new String[size];
+    for(int i = 0; i < size; i++){
+      guy[i] = data[i];
+    }
+    return guy;
+  }
+
+  
 }
