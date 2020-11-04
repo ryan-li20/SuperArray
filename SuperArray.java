@@ -80,7 +80,6 @@ public class SuperArray{
       resize();
     }
     if(size < index){
-      System.out.println("OUT OF BOUNDS, DIDN'T ADD GIVEN NUMBER");
       return;
     }
     for(int i = size; i > index; i--){
@@ -97,8 +96,9 @@ public class SuperArray{
   public String remove(int index){
     String temp = data[index];
     for(int i = index; i <= size; i++){
-      data[index] = data[index+1];
+      data[i] = data[i+1];
     }
+    size--;
     return temp;
   }
 }
