@@ -101,4 +101,16 @@ public class SuperArray{
     size--;
     return temp;
   }
+
+  public int indexOf(String s){
+    if (isEmpty()){
+      return -1;
+    }
+    for(int i = 0; i < size; i++){
+      if(data[i].equals(s)){
+        return i;
+      }
+    }
+    return -1;
+  }
 }
