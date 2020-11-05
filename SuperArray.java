@@ -95,7 +95,7 @@ public class SuperArray{
 
   public String remove(int index){
     String temp = data[index];
-    for(int i = index; i <= size; i++){
+    for(int i = index; i < size; i++){
       data[i] = data[i+1];
     }
     size--;
@@ -122,5 +122,5 @@ public class SuperArray{
     return guy;
   }
 
-  
+
 }
