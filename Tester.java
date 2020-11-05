@@ -87,18 +87,21 @@ public class Tester{
     System.out.println("Remove test");
     System.out.println(colours.remove(2).equals("greenu"));
     System.out.println(colours.remove(4).equals("pinku"));//yellowu, brownu, purpleu, redu, blacku
-    System.out.println(colours.toString().equals("[yellowu, brownu, purpleu, redu, blacku]"));
+    System.out.println(colours.remove(4).equals("blacku"));//new testing
+    System.out.println(colours.remove(0).equals("yellowu"));
+    System.out.println(colours.toString().equals("[brownu, purpleu, redu]"));
+    System.out.println(colours.toString());
 
     System.out.println();
     System.out.println("indexOf tests");
-    System.out.println(colours.indexOf("yellowu") == 0);
-    System.out.println(colours.indexOf("purpleu") == 2);
+    System.out.println(colours.indexOf("brownu") == 0);
+    System.out.println(colours.indexOf("redu") == 2);
     System.out.println(colours.indexOf("Ok") == -1);
 
     System.out.println();
     System.out.println("toArray test");
     System.out.println(!(colours.toArray() == colours.toArray()));
-    System.out.println(Tester.toString(colours.toArray()).equals("[yellowu, brownu, purpleu, redu, blacku]"));
+    System.out.println(Tester.toString(colours.toArray()).equals("[brownu, purpleu, redu]"));
   }
 
   public static String toString(String[] arr){
