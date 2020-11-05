@@ -123,5 +123,19 @@ public class SuperArray{
     return guy;
   }
 
-
+  public static void removeDuplicates(SuperArray s){
+    SuperArray once = new SuperArray();
+    if(s.size() == 0){
+      return;
+    }
+    for(int i = 0; i < s.size(); i++){
+      if(once.contains(s.get(i))) {
+        s.remove(i);
+        i = i-1;
+      }
+      else{
+        once.add(s.get(i));
+      }
+    }
+  }
 }
