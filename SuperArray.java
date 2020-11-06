@@ -138,4 +138,41 @@ public class SuperArray{
       }
     }
   }
+
+  public static SuperArray findOverlap(SuperArray a, SuperArray b){
+    SuperArray intersection = new SuperArray();
+    for(int i = 0; i < a.size(); i++){
+      if(b.contains(a.get(i))){
+        intersection.add(a.get(i));
+      }
+    }
+  }
+
+  public int lastIndexOf(String value){
+    if(isEmpty()){
+      return -1;
+    }
+    int last = -1;
+    for(int i = 0; i < size; i++){
+      if(data[i].equals(s)){
+        last = i;
+      }
+    }
+    return last;
+  }
+
+  public boolean equals(SuperArray other){
+    if(other.size() != this.size()){
+      return false;
+    }
+    if(this.size() == 0){
+      return false;
+    }
+    for(int i = 0; i < this.size(); i++){
+       if(ohter.get(i) != this.get(i)){
+         return false;
+       }
+    }
+    return true;
+  }
 }
