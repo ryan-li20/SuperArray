@@ -3,7 +3,7 @@ public class SuperArray{
   private int size;
 
   private void resize(){
-    String[] newguy = new String[data.length * 2];
+    String[] newguy = new String[(data.length +1) * 2];
     for(int i = 0; i < data.length; i++){
       newguy[i] = data[i];
     }
@@ -16,6 +16,9 @@ public class SuperArray{
   }
 
   public SuperArray(int initialCapacity){
+    if(initialCapacity < 0){
+      throw new IllegalArgumentException("Capacity" + initialCapacity + "cannot be negative");
+    }
     data = new String[initialCapacity];
     size = 0;
   }
@@ -34,10 +37,22 @@ public class SuperArray{
   }
 
   public String get(int index){
+    if(index < 0){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
+    }
+    if(index > size){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
+    }
     return data[index];
   }
 
   public String set(int index, String element){
+    if(index < 0){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
+    }
+    if(index > size){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
+    }
     String temp = data[index];
     data[index] = element;
     return temp;
@@ -76,6 +91,12 @@ public class SuperArray{
   }
 
   public void add(int index, String element){
+    if(index < 0){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
+    }
+    if(index > size){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
+    }
     if(size == data.length){
       resize();
     }
@@ -94,6 +115,12 @@ public class SuperArray{
   }
 
   public String remove(int index){
+    if(index < 0){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
+    }
+    if(index > size){
+      throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
+    }
     String temp = data[index];
     for(int i = index; i < size-1; i++){
       resize();
@@ -123,38 +150,13 @@ public class SuperArray{
     return guy;
   }
 
-  public static void removeDuplicates(SuperArray s){
-    SuperArray once = new SuperArray();
-    if(s.size() == 0){
-      return;
-    }
-    for(int i = 0; i < s.size(); i++){
-      if(once.contains(s.get(i))) {
-        s.remove(i);
-        i = i-1;
-      }
-      else{
-        once.add(s.get(i));
-      }
-    }
-  }
-
-  public static SuperArray findOverlap(SuperArray a, SuperArray b){
-    SuperArray intersection = new SuperArray();
-    for(int i = 0; i < a.size(); i++){
-      if(b.contains(a.get(i))){
-        intersection.add(a.get(i));
-      }
-    }
-  }
-
   public int lastIndexOf(String value){
     if(isEmpty()){
       return -1;
     }
     int last = -1;
     for(int i = 0; i < size; i++){
-      if(data[i].equals(s)){
+      if(data[i].equals(value)){
         last = i;
       }
     }
@@ -169,7 +171,7 @@ public class SuperArray{
       return false;
     }
     for(int i = 0; i < this.size(); i++){
-       if(ohter.get(i) != this.get(i)){
+       if(other.get(i) != this.get(i)){
          return false;
        }
     }
