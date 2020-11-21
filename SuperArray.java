@@ -3,7 +3,7 @@ public class SuperArray{
   private int size;
 
   private void resize(){
-    String[] newguy = new String[(data.length +1) * 2];
+    String[] newguy = new String[(size+1)*2];
     for(int i = 0; i < data.length; i++){
       newguy[i] = data[i];
     }
@@ -40,7 +40,7 @@ public class SuperArray{
     if(index < 0){
       throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
     }
-    if(index > size){
+    if(index >= size){
       throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
     }
     return data[index];
@@ -50,7 +50,7 @@ public class SuperArray{
     if(index < 0){
       throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
     }
-    if(index > size){
+    if(index >= size){
       throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
     }
     String temp = data[index];
@@ -118,12 +118,11 @@ public class SuperArray{
     if(index < 0){
       throw new IndexOutOfBoundsException("Index" +index+ "cannot be negative");
     }
-    if(index > size){
+    if(index >= size){
       throw new IndexOutOfBoundsException("Index" +index+ "cannot be greater than array length");
     }
     String temp = data[index];
     for(int i = index; i < size-1; i++){
-      resize();
       data[i] = data[i+1];
     }
     size--;
